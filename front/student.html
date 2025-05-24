@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Тестирование — Система Скорочтения</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<style>
+  #text-block,#questions-block{display:none}
+  .question{margin-bottom:15px}
+</style>
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+  <h2 class="text-center mb-2">Тестирование</h2>
+  <h5 id="method-name" class="text-center text-muted mb-4">Методика: …</h5>
+
+  <div class="text-center mb-3">
+    <button id="startBtn" class="btn btn-success">Пуск</button>
+    <button id="stopBtn" class="btn btn-danger" disabled>Стоп</button>
+  </div>
+
+  <div id="timer" class="text-center fs-4 mb-3 text-muted">Время: 0 сек</div>
+
+  <div id="text-block" class="p-3 border bg-white rounded mb-4">
+    <p id="reading-text" class="text-body" style="font-size:1.2rem;">Здесь будет ваш текст…</p>
+  </div>
+
+  <div id="questions-block" class="bg-white p-4 border rounded">
+    <h4 class="mb-3">Контрольные вопросы</h4>
+    <div class="question">
+      <label class="form-label">1. О чём шёл основной рассказ?</label>
+      <input type="text" class="form-control" placeholder="Введите ответ…">
+    </div>
+    <div class="question">
+      <label class="form-label">2. Какое настроение у текста?</label>
+      <input type="text" class="form-control" placeholder="Введите ответ…">
+    </div>
+    <div class="question">
+      <label class="form-label">3. Упомяните одно ключевое слово из текста.</label>
+      <input type="text" class="form-control" placeholder="Введите ответ…">
+    </div>
+    <div class="text-center mt-4">
+      <a href="results.html" class="btn btn-primary">Отправить</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const params   = new URLSearchParams(window.location.search);
+const method   = params.get("method") || "—";
+document.getElementById("method-name").textContent = `Методика: ${method}`;
+
+const textSample="Это демонстрационный фрагмент текста. Здесь будет отображаться материал для чтения. После нажатия на 'Стоп' вы увидите вопросы.";
+const textBlock=document.getElementById("reading-text");
+
+switch(method){
+  /* — ранее добавленные — */
+  case "Чтение наоборот":
+    textBlock.innerText=textSample.split("").reverse().join("");
+    break;
+  case "Непрерывное чтение":
+    textBlock.innerText=textSample;
+    textBlock.style.letterSpacing="-1px";
+    break;
+  case "Клиновидные таблицы":
+    textBlock.innerHTML=`<pre style="font-family:monospace;">
+К
+Л И
+И Н О
+Н О В И
+О В И Д Н
+</pre>`;
+    break;
+  case "Таблицы Шульте":
+    textBlock.innerHTML=`<div class="d-flex flex-wrap justify-content-center" style="max-width:200px;margin:auto;gap:5px;">
+      ${Array.from({length:25},()=>`<div class="border p-2" style="width:40px;text-align:center;">${Math.floor(Math.random()*50)}</div>`).join("")}
+    </div>`;
+    break;
+  case "Фото-чтение":
+    textBlock.innerHTML=`<p style="font-size:2rem;text-align:center;font-weight:bold;">${textSample}</p>`;
+    break;
+  case "Чтение по диагонали":
+    textBlock.innerHTML=`<div class="text-center">${textSample.split(" ").filter((_,i)=>i%2===0).join(" ")}</div>`;
+    break;
+
+  /* — новые методики — */
+  case "Змейка":
+    textBlock.innerHTML=textSample.split(" ").map((w,i)=>`<div style="text-align:${i%2?'right':'left'};">${w}</div>`).join("");
+    break;
+  case "Центральное выделение":
+    textBlock.innerHTML=textSample.split(". ").map(sent=>{
+      const words=sent.trim().split(" ");
+      const c=Math.floor(words.length/2);
+      words[c]=`<strong style="color:red;">${words[c]}</strong>`;
+      return words.join(" ");
+    }).join(". ");
+    break;
+  case "Мигание слов":
+    textBlock.innerHTML=`<span id="blinker">${textSample}</span>`;
+    setInterval(()=>{const el=document.getElementById("blinker");el.style.opacity=el.style.opacity==="0.2"?"1":"0.2";},400);
+    break;
+  case "Вертикальное чтение":
+    textBlock.innerHTML=`<pre style="font-family:monospace;">${textSample.replaceAll(" ","").split("").join("\n")}</pre>`;
+    break;
+  case "Чтение по цвету":
+    const colors=['red','green','blue','orange','purple'];
+    textBlock.innerHTML=textSample.split(" ").map((w,i)=>`<span style="color:${colors[i%colors.length]};">${w}</span>`).join(" ");
+    break;
+  default:
+    textBlock.innerText=textSample;
+}
+
+/* — таймер — */
+let t=0, int;
+document.getElementById("startBtn").onclick=function(){
+  document.getElementById("text-block").style.display="block";
+  this.disabled=true;
+  document.getElementById("stopBtn").disabled=false;
+  document.getElementById("timer").textContent="Время: 0 сек";
+  int=setInterval(()=>{document.getElementById("timer").textContent=`Время: ${++t} сек`;},1000);
+};
+document.getElementById("stopBtn").onclick=function(){
+  clearInterval(int);
+  this.disabled=true;
+  document.getElementById("questions-block").style.display="block";
+};
+</script>
+
+</body>
+</html>

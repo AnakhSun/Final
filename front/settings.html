@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Настройки — Ученик</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5" style="max-width: 600px;">
+  <h3 class="mb-4 text-center">⚙️ Настройки пользователя</h3>
+
+  <form>
+    <div class="mb-3">
+      <label for="username" class="form-label">Имя пользователя</label>
+      <input type="text" class="form-control" id="username" placeholder="Иван Петров">
+    </div>
+
+    <div class="mb-3">
+      <label for="program" class="form-label">Программа обучения</label>
+      <select class="form-select" id="program">
+        <option selected>Выберите...</option>
+        <option value="basic">Базовая</option>
+        <option value="advanced">Продвинутая</option>
+        <option value="pro">Профессиональная</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="theme" class="form-label">Предпочитаемая тема текстов</label>
+      <select class="form-select" id="theme">
+        <option selected>Любая</option>
+        <option value="nature">Природа</option>
+        <option value="science">Наука</option>
+        <option value="history">История</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="language" class="form-label">Язык обучения</label>
+      <select class="form-select" id="language">
+        <option selected>Русский</option>
+        <option value="en">Английский</option>
+        <option value="de">Немецкий</option>
+      </select>
+    </div>
+
+    <div class="text-center mt-4 d-grid">
+      <button type="button" class="btn btn-primary" onclick="alert('Изменения сохранены (муляж)')">Сохранить</button>
+      <a href="dashboard.html" class="btn btn-secondary mt-2">Назад</a>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

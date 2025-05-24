@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Статистика — Ученик</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+  <h3 class="text-center mb-4">📊 Ваша статистика</h3>
+
+  <div class="mb-5">
+    <h5 class="text-center mb-3">Эффективность обучения по методикам</h5>
+    <canvas id="methodsChart"></canvas>
+  </div>
+
+  <div class="mb-5">
+    <h5 class="text-center mb-3">Стабильность скорости чтения</h5>
+    <canvas id="speedChart"></canvas>
+  </div>
+
+  <div class="mb-5">
+    <h5 class="text-center mb-3">Общий прогресс</h5>
+    <canvas id="progressChart"></canvas>
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="dashboard.html" class="btn btn-secondary">← Назад к панели</a>
+  </div>
+</div>
+
+<script>
+  // Эффективность по методикам
+  new Chart(document.getElementById("methodsChart"), {
+    type: 'bar',
+    data: {
+      labels: ['Базовая', 'Продвинутая', 'Профи'],
+      datasets: [{
+        label: 'Повышение понимания (%)',
+        data: [15, 30, 45],
+        backgroundColor: ['#6c757d', '#0d6efd', '#198754']
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false }
+      }
+    }
+  });
+
+  // Стабильность чтения
+  new Chart(document.getElementById("speedChart"), {
+    type: 'line',
+    data: {
+      labels: ['Неделя 1', 'Неделя 2', 'Неделя 3', 'Неделя 4', 'Неделя 5'],
+      datasets: [{
+        label: 'Скорость (слов/мин)',
+        data: [180, 190, 185, 200, 195],
+        borderColor: '#0d6efd',
+        tension: 0.3,
+        fill: false
+      }]
+    },
+    options: {
+      responsive: true
+    }
+  });
+
+  // Общий прогресс (понимание / скорость)
+  new Chart(document.getElementById("progressChart"), {
+    type: 'doughnut',
+    data: {
+      labels: ['Понимание текста', 'Скорость чтения'],
+      datasets: [{
+        data: [82, 90],
+        backgroundColor: ['#198754', '#ffc107']
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

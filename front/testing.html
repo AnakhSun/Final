@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Выбор методики — Тестирование</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    .card-method {
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .card-method:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+  <h3 class="text-center mb-4">🧠 Выберите методику скорочтения</h3>
+
+  <div class="row g-4">
+
+    <!-- Методика: Чтение наоборот -->
+    <div class="col-md-4">
+      <a href="student.html?method=Чтение%20наоборот" class="text-decoration-none text-dark">
+        <div class="card card-method h-100 shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title">🔄 Чтение наоборот</h5>
+            <p class="card-text">Усложнённое чтение текста с конца — тренирует внимание и память.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Методика: Непрерывное чтение -->
+    <div class="col-md-4">
+      <a href="student.html?method=Непрерывное%20чтение" class="text-decoration-none text-dark">
+        <div class="card card-method h-100 shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title">📖 Непрерывное чтение</h5>
+            <p class="card-text">Плавное чтение текста без пауз — развивает беглость.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Методика: Клиновидные таблицы -->
+    <div class="col-md-4">
+      <a href="student.html?method=Клиновидные%20таблицы" class="text-decoration-none text-dark">
+        <div class="card card-method h-100 shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title">🔺 Клиновидные таблицы</h5>
+            <p class="card-text">Упражнение на расширение поля зрения и улучшение концентрации.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Методика: Таблицы Шульте -->
+    <div class="col-md-4">
+      <a href="student.html?method=Таблицы%20Шульте" class="text-decoration-none text-dark">
+        <div class="card card-method h-100 shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title">🔢 Таблицы Шульте</h5>
+            <p class="card-text">Повышение периферического зрения и скорости восприятия чисел.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Методика: Фото-чтение -->
+    <div class="col-md-4">
+      <a href="student.html?method=Фото-чтение" class="text-decoration-none text-dark">
+        <div class="card card-method h-100 shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title">📷 Фото-чтение</h5>
+            <p class="card-text">Чтение блоками — восприятие страницы целиком за долю секунды.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Методика: Чтение по диагонали -->
+    <div class="col-md-4">
+      <a href="student.html?method=Чтение%20по%20диагонали" class="text-decoration-none text-dark">
+        <div class="card card-method h-100 shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title">📐 Чтение по диагонали</h5>
+            <p class="card-text">Пропуск второстепенных слов — ускоряет просмотр без потери смысла.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="text-center mt-5">
+    <a href="dashboard.html" class="btn btn-secondary">← Назад</a>
+  </div>
+</div>
+
+</body>
+</html>
